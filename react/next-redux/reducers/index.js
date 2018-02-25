@@ -1,2 +1,4 @@
-export { authReducer } from './auth.reducer';
-export { commonReducer } from './common.reducer';
+export { AuthReducer } from './auth.reducer';
+export { CommonReducer } from './common.reducer';
+export { IdeaReducer } from './idea.reducer';
+export { UserReducer } from './user.reducer';

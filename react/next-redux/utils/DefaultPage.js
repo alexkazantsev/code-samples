@@ -1,7 +1,8 @@
-import React from 'react'; // eslint-disable-line
-import Router from 'next/router';// eslint-disable-line
+import React from 'react';
+import Router from 'next/router';
 
-import { WithReduxSaga } from './';
+import { WithReduxSaga, ApiService } from './';
+import './../styles/global';
 
 export const DefaultPage = () => (Page) => {
 
@@ -9,8 +10,10 @@ export const DefaultPage = () => (Page) => {
   class DefaultPageHOC extends React.Component {
 
     static async getInitialProps(ctx) {
-      if (Page.getInitialProps) return await Page.getInitialProps(ctx);
-      return {};
+      let props = {};
+      if (Page.getInitialProps) props = await Page.getInitialProps(ctx);
+      if (!process.browser) new ApiService(ctx.req); /* INITIALIZE API SERVICE ON THE SERVER */
+      return { ...props };
     }
 
     render() {

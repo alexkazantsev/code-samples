@@ -1,15 +1,18 @@
-import { AUTH_TYPES } from '../types';
+import {
+  SIGNUP,
+  SIGNUP_ERROR,
+  CLEAR_SIGNUP_ERROR,
+  LOGIN,
+  LOGIN_ERROR,
+  CLEAR_LOGIN_ERROR,
+  LOGOUT,
+} from './../types/auth.types';
 
-export function login(payload, onSuccess, onFail) {
-  return {
-    type: TYPES.LOGIN_REQUEST,
-    payload,
-    onSuccess,
-    onFail,
-  };
-}
+export const signup = (payload, onSuccess) => ({ type: SIGNUP, payload, onSuccess });
+export const clearSignupError = () => ({ type: CLEAR_SIGNUP_ERROR });
+export const signupError = payload => ({ type: SIGNUP_ERROR, payload });
 
-export const loginSuccess = (payload) => ({ type: AUTH_TYPES.LOGIN_SUCCESS, payload });
-export const loginFail = (payload) => ({ type: AUTH_TYPES.LOGIN_FAIL, payload });
-export const clearLoginError = () => ({ type: AUTH_TYPES.LOGIN_CLEAR_ERROR });
-
+export const login = (payload, onSuccess) => ({ type: LOGIN, payload, onSuccess });
+export const clearLoginError = () => ({ type: CLEAR_LOGIN_ERROR });
+export const loginError = payload => ({ type: LOGIN_ERROR, payload });
+export const logout = onSuccess => ({ type: LOGOUT, onSuccess });

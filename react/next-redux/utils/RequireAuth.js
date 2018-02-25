@@ -1,10 +1,8 @@
 import React from 'react'; // eslint-disable-line
 import Router from 'next/router';// eslint-disable-line
 
-import { Loader } from './../components';
 import { ApiService } from './';
-import { TOKEN_KEY } from './../config/app.config';
-import { getTokenFromServerCookie } from './CookieService';
+import { TOKEN_KEY } from './../config';
 import { removeToken } from './CommonUtils';
 
 export const RequireAuth = () => (Page) => {
@@ -20,7 +18,7 @@ export const RequireAuth = () => (Page) => {
     static async getInitialProps(ctx) {
       try {
         const { caller } = new ApiService(ctx.req);
-        await caller.get('/bootstrap');
+        await caller.get('/me');
         const pageProps = Page.getInitialProps && await Page.getInitialProps(ctx);
         return { ...pageProps };
       } catch (e) {
@@ -58,7 +56,7 @@ export const RequireAuth = () => (Page) => {
     render() {
       const { isLoading } = this.state;
 
-      if (isLoading) return <Loader />;
+      if (isLoading) return <div>Loading...</div>;
       return (
         <Page {...this.props} />
       );
