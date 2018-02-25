@@ -1,7 +1,7 @@
 ## React SSR example
-####Tech stack:
+#### Tech stack:
     Next.js, React.js, Redux, Styled Components
 
-###Development:
-    $ npm install
+### Development:
+    $ yarn
     $ npm run dev
