@@ -1,0 +1,16 @@
+#IDEs
+.next
+.idea
+.DS_Store
+
+#modules
+node_modules
+
+#bundles & additional files
+dist
+webpack-assets.json
+dist.zip
+
+#logs
+*.log
+*.log.*

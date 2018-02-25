@@ -1,0 +1,30 @@
+version: '2.1'
+
+services:
+  db:
+    container_name: rc-db
+    hostname: rc-db
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: rc
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+  api:
+    container_name: rc-api
+    hostname: rc-api
+    build: ./
+    volumes:
+      - ./src:/var/www/rc-api/src
+    ports:
+      - "8000:8000"
+    env_file: "./docker/environments"
+    depends_on:
+      - db
+volumes:
+  db_data:

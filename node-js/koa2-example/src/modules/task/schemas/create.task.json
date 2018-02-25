@@ -1,0 +1,16 @@
+{
+  "title": "task create",
+  "description": "create schema",
+  "type": "object",
+  "required": [
+    "title"
+  ],
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

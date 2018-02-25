@@ -1,0 +1,17 @@
+{
+  "title": "user create",
+  "description": "create schema",
+  "type": "object",
+  "required": [
+    "first_name",
+    "last_name"
+  ],
+  "properties": {
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    }
+  }
+}
