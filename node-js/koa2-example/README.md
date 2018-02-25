@@ -18,7 +18,7 @@
 
 ```
   $ docker build . -t koa2-example
-  $ docker run --name safe-js --rm -p 8000:8000 koa2-example
+  $ docker run --name koa2-example --rm -p 8000:8000 koa2-example
 ```
 
 ### Run using docker-compose:

@@ -1,3 +1,3 @@
 # ReactJS
 
-- [Simple App](./next-redux)
+- [Simple App Template](./next-redux)
