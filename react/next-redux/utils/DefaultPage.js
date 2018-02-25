@@ -10,10 +10,9 @@ export const DefaultPage = () => (Page) => {
   class DefaultPageHOC extends React.Component {
 
     static async getInitialProps(ctx) {
-      let props = {};
-      if (Page.getInitialProps) props = await Page.getInitialProps(ctx);
       if (!process.browser) new ApiService(ctx.req); /* INITIALIZE API SERVICE ON THE SERVER */
-      return { ...props };
+      if (Page.getInitialProps) return await Page.getInitialProps(ctx);
+      return {};
     }
 
     render() {
