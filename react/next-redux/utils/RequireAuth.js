@@ -17,8 +17,7 @@ export const RequireAuth = () => (Page) => {
 
     static async getInitialProps(ctx) {
       try {
-        const { caller } = new ApiService(ctx.req);
-        await caller.get('/me');
+        await ApiService.instance.caller.get('/me');
         const pageProps = Page.getInitialProps && await Page.getInitialProps(ctx);
         return { ...pageProps };
       } catch (e) {

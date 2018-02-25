@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactModal from 'react-modal';
 
-import { DefaultPage, RequireAuth } from './../utils';
-import { ideaActions as actions } from './../actions';
+import { DefaultPage, RequireAuth, ApiService } from './../utils';
+import { ideaActions, userActions } from './../actions';
+import { FETCH_ALL_IDEAS_ERROR } from './../types/idea.types';
 import {
   PageWrapper,
   IdeaListHeader,
@@ -38,9 +39,22 @@ const styles = {
 @RequireAuth()
 @connect(
   state => ({ idea: state.idea }),
-  dispatch => ({ actions: bindActionCreators(actions, dispatch) }),
+  dispatch => ({
+    actions: bindActionCreators({ ...ideaActions, ...userActions }, dispatch)
+  }),
 )
 export default class Dashboard extends Component {
+
+  static async getInitialProps({ store: { dispatch } }) {
+    try {
+      const ideas = await ApiService.instance.get('idea');
+      return { ideas };
+    } catch (e) {
+      dispatch({ type: FETCH_ALL_IDEAS_ERROR, payload: e });
+    }
+    return {};
+  }
+
   constructor(props) {
     super(props);
 
@@ -48,11 +62,6 @@ export default class Dashboard extends Component {
       removeModal: false,
       idToRemove: null,
     };
-  }
-
-  componentWillMount() {
-    this.props.actions.fetchUser();
-    this.props.actions.fetchIdeas();
   }
 
   showModal = (id) => {

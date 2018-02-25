@@ -24,6 +24,7 @@ function* fetchIdeas() {
       yield put({ type: FETCH_ALL_IDEAS_SUCCESS, payload: response });
     } catch (e) {
       console.error(e);
+      yield put({ type: FETCH_ALL_IDEAS_ERROR });
     }
   }
 }

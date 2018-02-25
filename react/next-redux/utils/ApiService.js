@@ -6,9 +6,7 @@ import { UPDATE_TOKEN, UPDATE_TOKEN_SUCCESS } from './../types/auth.types';
 import { API_URL, TOKEN_KEY, TOKEN_EXPIRED_TIME } from './../config';
 import { CookieService } from './';
 
-const TOKEN = Symbol('token');
-const REFRESH_TOKEN = Symbol('refresh_token');
-const REFRESH_TOKEN_EXPIRED = Symbol('refresh_token_expired');
+const JWT_TOKEN = Symbol('token');
 const INSTANCE = Symbol('instance');
 const FN__APPLY_MIDDLEWARE = Symbol('FN__APPLY_MIDDLEWARE');
 const FN__PROTECTED_CALL = Symbol('FN__PROTECTED_CALL');
@@ -19,17 +17,15 @@ export class ApiService {
   static get instance() { return ApiService[INSTANCE] ? ApiService[INSTANCE] : new ApiService(); };
 
   caller = null;
-  [TOKEN] = null;
-  [REFRESH_TOKEN] = null;
-  [REFRESH_TOKEN_EXPIRED] = null;
+  [JWT_TOKEN] = null;
 
   constructor(request) {
     if (ApiService[INSTANCE] instanceof ApiService) return ApiService[INSTANCE]; /* API SHOULD BE AS SINGLETONE */
 
     if (!process.browser && request) {
-      this[TOKEN] = CookieService.getFromServerCookie(request, 'jwt');
+      this[JWT_TOKEN] = CookieService.getFromServerCookie(request, 'jwt');
     } else {
-      this[TOKEN] = CookieService.getFromLocalCookie('jwt');
+      this[JWT_TOKEN] = CookieService.getFromLocalCookie('jwt');
     }
     this.caller = axios.create({ baseURL: API_URL });
     this[FN__APPLY_MIDDLEWARE]();
@@ -38,7 +34,7 @@ export class ApiService {
 
   [FN__APPLY_MIDDLEWARE]() {
     this.caller.interceptors.request.use(config => {
-      const tokenHeader = this[TOKEN] ? { 'Authorization': `Bearer ${this[TOKEN]}` } : {};
+      const tokenHeader = this[JWT_TOKEN] ? { 'Authorization': `Bearer ${this[JWT_TOKEN]}` } : {};
       config.headers = {
         'Content-Type': 'application/json',
         ...tokenHeader
