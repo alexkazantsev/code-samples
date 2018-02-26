@@ -5,4 +5,5 @@
 - [Express example](./express-example)
 - TypeScript using example:
 -- [Routing Controlles example](./ts/routing-controllers-example)
+-- [REST API with Ethereum connector](./ts/ethereum-meddleware)
 -- [NestJS example](./ts/nest-example)

@@ -1,0 +1,66 @@
+{
+    "name": "recicle-chain-api",
+    "version": "1.0.0",
+    "main": "src/index.ts",
+    "author": "Alexander Kazantsev <akazantsev@s-pro.io>",
+    "license": "MIT",
+    "scripts": {
+        "start": "node_modules/.bin/ts-node ./src/index.ts",
+        "dev": "nodemon -w src --exec node_modules/.bin/ts-node ./src/index.ts",
+        "lint": "node_modules/.bin/tslint --project ./tslint.json",
+        "test": "node_modules/.bin/jest --silent=false --colors"
+    },
+    "jest": {
+        "transform": {
+            ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+        },
+        "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts)$",
+        "moduleFileExtensions": [
+            "ts",
+            "js"
+        ]
+    },
+    "dependencies": {
+        "axios": "^0.16.1",
+        "boom": "^5.1.0",
+        "class-validator": "^0.7.2",
+        "crypto": "^1.0.1",
+        "eth-lightwallet": "^2.5.6",
+        "hooked-web3-provider": "^1.0.0",
+        "jsonwebtoken": "^7.4.1",
+        "kcors": "^1.3.2",
+        "koa": "^2.2.0",
+        "koa-bodyparser": "^4.2.0",
+        "koa-logger": "^3.0.0",
+        "koa-multer": "^1.0.1",
+        "koa-router": "^7.2.0",
+        "lodash": "^4.17.4",
+        "mailparser": "^2.0.5",
+        "mysql": "^2.13.0",
+        "query-string": "^5.0.0",
+        "reflect-metadata": "^0.1.10",
+        "routing-controllers": "0.7.0",
+        "typeorm": "0.1.0-alpha.3",
+        "web3": "^1.0.0-beta.21",
+        "winston": "^2.3.1"
+    },
+    "devDependencies": {
+        "@types/boom": "^4.3.2",
+        "@types/core-js": "^0.9.41",
+        "@types/jasmine": "^2.5.52",
+        "@types/koa": "^2.0.39",
+        "@types/koa-bodyparser": "^3.0.23",
+        "@types/koa-router": "^7.0.22",
+        "@types/node": "^7.0.22",
+        "@types/query-string": "^4.3.1",
+        "@types/winston": "^2.3.2",
+        "jest": "^20.0.4",
+        "jest-cli": "^20.0.4",
+        "nodemon": "^1.11.0",
+        "ts-jest": "^20.0.6",
+        "ts-node": "^3.0.4",
+        "tslint": "^5.3.2",
+        "tslint-eslint-rules": "^4.1.1",
+        "typescript": "^2.3.3"
+    }
+}

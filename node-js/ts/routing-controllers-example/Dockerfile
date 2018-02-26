@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:9
 
 RUN npm i -g typescript ts-node
 
