@@ -13,3 +13,4 @@ Created for [BlockchainUA Hackathon](http://blockchainua-hackathon.com/) in one 
 - [MySQL](https://www.mysql.com/)
 - [TypeORM](https://github.com/typeorm/typeorm)
 - [Docker](https://www.docker.com/)
+- [Web3](https://github.com/ethereum/web3.js/)
