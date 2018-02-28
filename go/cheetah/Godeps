@@ -1,0 +1,5 @@
+github.com/gin-gonic/gin
+github.com/jinzhu/gorm
+github.com/go-sql-driver/mysql
+github.com/dgrijalva/jwt-go
+github.com/michaeljs1990/val
