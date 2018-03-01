@@ -1,0 +1,3 @@
+Username,FirstName,LastName,Email,PhoneNumber,Password,Organization,EmailNotify,SmsNotify
+fake,fake,Marcelle,fake@gmail.com,88005553535,3123123,1,true,true
+fake,fake,Black,fake@gmail.com,1232642432134,312321,1,false,true

@@ -1,0 +1,21 @@
+FROM openjdk:8-jdk
+
+ENV DB_HOST=sponsors_db
+ENV DB_PORT=3306
+ENV DB_USERNAME=root
+ENV DB_PASSWORD=root
+ENV DB_NAME=sponsors
+
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y apt-transport-https maven && \
+    apt-get -y autoremove && \
+    apt-get -y autoclean && \
+    rm -rf /var/lib/apt/lists/*
+
+ADD ./sponsors/ /sponsors/
+WORKDIR /sponsors/
+RUN mvn package -Dmaven.test.skip=true
+
+EXPOSE 8080
+
+ENTRYPOINT [ "sh", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar /sponsors/target/sponsors.jar" ] 

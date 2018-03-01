@@ -1,0 +1,2 @@
+MacAddress,FirstName,LastName,EmailAddress,PhoneNumber,Organization,EmailNotify,SmsNotify
+12345678,fake,Marcelle,fake@mail.com,721632891723,1,true,false
