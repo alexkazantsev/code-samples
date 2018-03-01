@@ -14,3 +14,7 @@
 ### Go
 
 - [REST API Example](./go/cheetah)
+
+### Java
+
+- [Spring REST API Example](./java/java-rest-example)
