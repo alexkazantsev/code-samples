@@ -2,6 +2,8 @@ name: ddc
 description: A new Flutter project.
 
 dependencies:
+  redux: "^2.1.1"
+  flutter_redux: "^0.3.5"
   flutter:
     sdk: flutter
 
