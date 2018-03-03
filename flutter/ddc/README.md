@@ -1,8 +1,6 @@
-# ddc
+# Application for the devices driver checking
 
-A new Flutter project.
+### Tech stack:
 
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+- [Flutter](https://flutter.io/)
+- [Redux](https://github.com/johnpryan/redux.dart)
