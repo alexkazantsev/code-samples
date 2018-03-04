@@ -21,4 +21,4 @@
 
 ### Flutter (Dart):
 
-- [Application for the devices driver checking](./flutter/ddc)
+- [Application for the devices driver checking](./flutter/device_driver_checker)
