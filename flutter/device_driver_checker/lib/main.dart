@@ -4,15 +4,16 @@ import 'package:redux/redux.dart';
 
 import 'models/models.dart';
 import 'presentations/home.screen.dart';
+import 'presentations/login.screen.dart';
 import 'reducers/combine.reducers.dart';
 import 'utils/routes.dart';
 
 void main() => runApp(new DDCApp());
 
 class DDCApp extends StatelessWidget {
-  final store = new Store(appReducer, // ignore: strong_mode_uses_dynamic_as_bottom
-      initialState:
-          new AppState.loading());
+  final store =
+      new Store(appReducer, // ignore: strong_mode_uses_dynamic_as_bottom
+          initialState: new AppState.loading());
 
   DDCApp();
 
@@ -31,10 +32,12 @@ class DDCApp extends StatelessWidget {
                 onInit: (store) => store.state,
                 builder: (context, store) => new HomeScreen(),
               );
-            }
+            },
+            AppRoutes.login: (context) => new StoreBuilder<AppState>(
+                  onInit: (store) => store.state,
+                  builder: (context, store) => new LoginScreen(),
+                )
           },
         ));
   }
 }
-
-

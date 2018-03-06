@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:device_driver_checker/utils/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:device_driver_checker/utils/routes.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen() : super(key: Keys.HOME_SCREEN);
@@ -24,10 +25,11 @@ class HomeScreenState extends State<HomeScreen> {
       if (key == null) {
         /** MOVE TO LOGIN SCREEN */
         debugPrint('key is NULL');
-        sleep(new Duration(seconds: 5));
+//        sleep(new Duration(seconds: 5));
         setState(() {
           isLoading = false;
         });
+        Navigator.of(context).pushNamed(AppRoutes.login);
       }
     })();
   }
