@@ -42,6 +42,7 @@
     "koa-cors": "0.0.16",
     "koa-logger": "^3.1.0",
     "koa-router": "^7.3.0",
+    "moment": "^2.21.0",
     "sequelize": "^4.22.11",
     "winston": "^2.4.0"
   }

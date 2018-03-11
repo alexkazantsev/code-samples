@@ -36,6 +36,7 @@
         "koa-router": "^7.2.0",
         "lodash": "^4.17.4",
         "mailparser": "^2.0.5",
+        "moment": "^2.21.0",
         "mysql": "^2.13.0",
         "query-string": "^5.0.0",
         "reflect-metadata": "^0.1.10",
