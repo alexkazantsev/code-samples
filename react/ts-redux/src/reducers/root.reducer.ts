@@ -6,7 +6,7 @@ import {
 import { routerReducer, RouterState } from 'react-router-redux';
 
 import { RootAction } from './../actions';
-import { HomeState, HomeReducer } from './';
+import { HomeState, homeReducer } from './';
 
 interface StoreEnhancerState { }
 
@@ -15,9 +15,9 @@ export interface RootState extends StoreEnhancerState {
   home: HomeState;
 }
 
-export const rootReducer = combineReducers<RootState>({
+export const rootReducer = combineReducers<RootState, RootAction>({
   router: routerReducer,
-  home: HomeReducer,
+  home: homeReducer,
 });
 
 export type Dispatch = ReduxDispatch<RootAction>;

@@ -1,10 +1,10 @@
 import { RouterAction, LocationChangeAction } from 'react-router-redux';
 import { $call } from 'utility-types';
 
-import { HomeActions } from './';
+import { homeActions } from './home.actions';
 
 const returnsOfActions = [
-  ...Object.values(HomeActions),
+  ...Object.values(homeActions),
 ].map($call);
 
 type AppAction = typeof returnsOfActions[number];

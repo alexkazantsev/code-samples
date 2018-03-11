@@ -1,26 +1,28 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
-import { Route, Switch } from 'react-router';
-import { ConnectedRouter } from 'react-router-redux';
-import { History } from 'history';
-
+import { Router, Route } from 'react-router';
+import { hot } from 'react-hot-loader';
 import { HomeContainer } from './containers';
 import { configureStore } from './utils';
 
-const history: History = createBrowserHistory();
+const history = createBrowserHistory();
 const store = configureStore(history);
 
-export default class App extends React.Component {
+const routes = (
+  <Route path="/" component={HomeContainer} />
+);
+
+class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Switch>
-            <Route path="/" exact={true} component={HomeContainer} />
-          </Switch>
-        </ConnectedRouter>
+        <Router history={history}>
+          {routes}
+        </Router>
       </Provider>
     );
   }
 }
+
+export default hot(module)(App);
