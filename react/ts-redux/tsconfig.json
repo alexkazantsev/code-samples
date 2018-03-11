@@ -1,8 +1,15 @@
 {
   "compilerOptions": {
-    "baseUrl": "./", // enables absolute path imports
+    "baseUrl": ".", // enables absolute path imports
+    // "typeRoots": [
+    //   "./node_modules/@types",
+    //   "./typings"
+    // ],
+    // "paths": {
+    //   "redux": ["./types/redux.d.ts"]
+    // },
     "paths": { // define absolute path mappings
-      "redux": ["src/typings/redux.d.ts"]
+      "redux": ["./typings/redux.d.ts"]
       // "@src/*": ["src/*"] // will enable -> import { ... } from '@src/components'
       // in webpack you need to add -> resolve: { alias: { '@src': PATH_TO_SRC } }
     },
@@ -43,6 +50,6 @@
   "exclude": [
     "node_modules",
     "src/**/*.spec.*",
-    "src/**/*.d.ts"
+    "./**/*.d.ts"
   ]
 }
