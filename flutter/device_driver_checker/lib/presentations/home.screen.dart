@@ -1,9 +1,11 @@
 import 'dart:io';
+import 'dart:async';
 
 import 'package:device_driver_checker/utils/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:device_driver_checker/utils/routes.dart';
+import 'package:device_driver_checker/components/loading.component.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen() : super(key: Keys.HOME_SCREEN);
@@ -25,11 +27,16 @@ class HomeScreenState extends State<HomeScreen> {
       if (key == null) {
         /** MOVE TO LOGIN SCREEN */
         debugPrint('key is NULL');
-//        sleep(new Duration(seconds: 5));
-        setState(() {
-          isLoading = false;
+//        timeout(new Duration(seconds: 5));
+        Future timeout = new Future(() {});
+        timeout.
+        timeout.timeout(new Duration(seconds: 5), onTimeout: () {
+          debugPrint('foo');
+          setState(() {
+            isLoading = false;
+          });
+          Navigator.of(context).pushNamed(AppRoutes.login);
         });
-        Navigator.of(context).pushNamed(AppRoutes.login);
       }
     })();
   }
@@ -41,7 +48,7 @@ class HomeScreenState extends State<HomeScreen> {
           title: const Text('Device Driver Checker'),
         ),
         body: new Center(
-          child: isLoading ? const Text('Loading...') : const Text('Loaded'),
+          child: isLoading ? new Loading() : const Text('Loaded'),
         ),
         floatingActionButton: new FloatingActionButton(
           key: Keys.ADD_TODO_FAB,
