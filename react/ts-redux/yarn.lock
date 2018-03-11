@@ -5027,7 +5027,7 @@ react-router@^4.2.0:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
-react-scripts-ts@2.13.0:
+react-scripts-ts@^2.13.0:
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/react-scripts-ts/-/react-scripts-ts-2.13.0.tgz#d5493035e6d521030f0d3e5e8e5b5872f7df1a28"
   dependencies:
