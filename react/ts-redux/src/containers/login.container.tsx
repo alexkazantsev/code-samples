@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from './../utils';
-import { Layout } from 'antd';
+import { Layout, Button } from 'antd';
 
 @connect()
 export class LoginContainer extends React.Component<{}, {}> {
@@ -13,6 +13,7 @@ export class LoginContainer extends React.Component<{}, {}> {
         </Layout.Header>
         <Layout.Content>
           <p>fooo</p>
+          <Button>ok</Button>
         </Layout.Content>
       </Layout>
     );

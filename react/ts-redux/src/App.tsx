@@ -6,6 +6,8 @@ import { hot } from 'react-hot-loader';
 import * as containers from './containers';
 import { configureStore } from './utils';
 
+import 'antd/dist/antd.css';
+
 const history = createBrowserHistory();
 const store = configureStore(history);
 
