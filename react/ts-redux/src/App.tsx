@@ -3,14 +3,17 @@ import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import { Router, Route } from 'react-router';
 import { hot } from 'react-hot-loader';
-import { HomeContainer } from './containers';
+import * as containers from './containers';
 import { configureStore } from './utils';
 
 const history = createBrowserHistory();
 const store = configureStore(history);
 
 const routes = (
-  <Route path="/" component={HomeContainer} />
+  <div>
+    <Route path="/" exact={true} component={containers.HomeContainer} />
+    <Route path="/login" component={containers.LoginContainer} />
+  </div>
 );
 
 class App extends React.Component {

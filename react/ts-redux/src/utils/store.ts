@@ -5,10 +5,12 @@ import { RootState, rootReducer } from './../reducers/root.reducer';
 import { History } from 'history';
 
 export const configureStore = (history: History, initialState?: RootState) => {
-  const middleware = routerMiddleware(history);
 
   const enhancer = compose(
-    applyMiddleware(middleware, createLogger({ collapsed: true })),
+    applyMiddleware(
+      routerMiddleware(history),
+      createLogger({ collapsed: true })
+    ),
   );
 
   return createStore(
