@@ -1,1 +1,1 @@
-export const TEST_TYPE: string = '@app/TEST_TYPE';
+export const TEST_TYPE = '@ts-redux/home/TEST_TYPE';
