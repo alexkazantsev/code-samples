@@ -4,7 +4,9 @@ const {
   DB_USER,
   DB_PASSWORD,
   DB_NAME,
+  LOG_LEVEL,
 } = process.env;
+import { ORM_COFIG } from './orm.config';
 
 export {
   DB_HOST,
@@ -12,4 +14,6 @@ export {
   DB_USER,
   DB_PASSWORD,
   DB_NAME,
+  LOG_LEVEL,
+  ORM_COFIG,
 };

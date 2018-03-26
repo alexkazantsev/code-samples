@@ -1,30 +1,21 @@
-import { Module } from '@nestjs/common';
+import { Module, NestModule, MiddlewaresConsumer, RequestMethod } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { UserModule } from './user/user.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import {
-  DB_HOST,
-  DB_PORT,
-  DB_USER,
-  DB_PASSWORD,
-  DB_NAME,
-} from './config';
+import { LoggerMiddleware } from './middlewares';
+import { ORM_COFIG } from './config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: DB_HOST,
-      port: parseInt(DB_PORT, 10),
-      username: DB_USER,
-      password: DB_PASSWORD,
-      database: DB_NAME,
-      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-      synchronize: true,
-    }),
+    TypeOrmModule.forRoot(ORM_COFIG),
     UserModule,
   ],
   controllers: [AppController],
   components: [],
 })
-export class ApplicationModule { }
+export class ApplicationModule implements NestModule {
+  configure(consumer: MiddlewaresConsumer) {
+    consumer.apply(LoggerMiddleware)
+      .forRoutes({ path: '*', method: RequestMethod.ALL });
+  }
+}
