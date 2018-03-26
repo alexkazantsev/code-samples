@@ -29,7 +29,6 @@ class HomeScreenState extends State<HomeScreen> {
         debugPrint('key is NULL');
 //        timeout(new Duration(seconds: 5));
         Future timeout = new Future(() {});
-        timeout.
         timeout.timeout(new Duration(seconds: 5), onTimeout: () {
           debugPrint('foo');
           setState(() {

@@ -6,6 +6,7 @@ import (
 	"cheetah/faculty"
 	"cheetah/group"
 	"cheetah/university"
+
 	"github.com/jinzhu/gorm"
 	_ "github.com/michaeljs1990/val"
 )
@@ -23,7 +24,7 @@ type User struct {
 	UniversityID uint                  `json:"university_id"`
 	Faculty      faculty.Faculty       `json:"faculty"` //belongs to faculty with foreign key as FacultyID
 	FacultyID    uint                  `json:"faculty_id"`
-	VkID	     uint	 	   `json:"vk_id"`
+	VkID         uint                  `json:"vk_id"`
 }
 
 type Users []User
@@ -36,8 +37,7 @@ type UserResponseJSON struct {
 	Department department.Department `json:"department"`
 	University university.University `json:"university"`
 	Faculty    faculty.Faculty       `json:"faculty"`
-	VkID	   uint	 	   	 `json:"vk_id"`
-
+	VkID       uint                  `json:"vk_id"`
 }
 
 type UserRequestJSON struct {
@@ -49,6 +49,5 @@ type UserRequestJSON struct {
 	Department *uint   `json:"department,string" validate:"required"`
 	Group      *uint   `json:"group,string" validate:"required"`
 	Password   *string `json:"password" validate:"required|regex:^.{6,}$"`
-	VkID	   *uint   `json:"vk_id"`
-
+	VkID       *uint   `json:"vk_id"`
 }
