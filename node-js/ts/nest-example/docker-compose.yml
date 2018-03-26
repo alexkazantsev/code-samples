@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  api:
+    container_name: nest-example-api
+    hostname: nest-example-api
+    build: 
+      context: .
+      dockerfile: ./Dockerfile.dev
+    volumes:
+      - ./src:/var/www/nest-example/src
+    ports:
+      - "3000:3000"
+    env_file: "./docker/environments"
+
