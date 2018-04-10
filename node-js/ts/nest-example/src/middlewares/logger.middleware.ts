@@ -11,8 +11,9 @@ export class LoggerMiddleware implements NestMiddleware {
         METHOD: method,
         PATH: originalUrl,
       } as any;
+      console.log(res.statusCode);
       if (!isEmpty(body)) info.BODY = body;
-      logger.info(JSON.stringify(info));
+      logger.info(info);
       next();
     };
   }

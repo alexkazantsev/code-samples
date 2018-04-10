@@ -13,9 +13,4 @@ import { ORM_COFIG } from './config';
   controllers: [AppController],
   components: [],
 })
-export class ApplicationModule implements NestModule {
-  configure(consumer: MiddlewaresConsumer) {
-    consumer.apply(LoggerMiddleware)
-      .forRoutes({ path: '*', method: RequestMethod.ALL });
-  }
-}
+export class ApplicationModule { }

@@ -6,6 +6,7 @@ const logger = new winston.Logger({
     timestamp: true,
     showLevel: true,
     colorize: true,
+    json: true,
   })],
   level: LOG_LEVEL,
 });

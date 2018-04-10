@@ -16,6 +16,7 @@
     "@nestjs/testing": "^4.5.5",
     "@nestjs/typeorm": "^2.0.0",
     "@nestjs/websockets": "^4.5.8",
+    "cli-color": "^1.2.0",
     "lodash": "^4.17.5",
     "mysql": "^2.15.0",
     "redis": "^2.7.1",
@@ -26,6 +27,7 @@
     "winston": "^2.4.1"
   },
   "devDependencies": {
+    "@types/cli-color": "^0.3.29",
     "@types/lodash": "^4.14.106",
     "@types/node": "^9.3.0",
     "@types/winston": "^2.3.8",
