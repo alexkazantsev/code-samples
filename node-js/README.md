@@ -6,4 +6,4 @@
 - TypeScript using example:
 -- [Routing Controlles example](./ts/routing-controllers-example)
 -- [REST API with Ethereum connector](./ts/ethereum-meddleware)
--- [NestJS example](./ts/nest-example)
+-- [NestJS example](https://github.com/alexkazantsev/nestjs-example)

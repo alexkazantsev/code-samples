@@ -1,8 +1,0 @@
-NODE_ENV=development
-LOG_LEVEL=debug
-
-DB_HOST=nest-example-db
-DB_PORT=3306
-DB_USER=root
-DB_PASSWORD=root
-DB_NAME=nest_example
