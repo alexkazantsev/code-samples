@@ -5,4 +5,5 @@
 - [Express example](./express-example)
 - [Routing Controlles example](./ts/routing-controllers-example)
 - [REST API with Ethereum connector](./ts/ethereum-meddleware)
+- [Code executor](./code-executor)
 - [NestJS example](https://github.com/alexkazantsev/nestjs-example)
