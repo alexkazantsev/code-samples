@@ -1,6 +1,5 @@
 import 'package:auth_example/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:validate/validate.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen() : super(key: Keys.LOGIN_SCREEN);
@@ -15,25 +14,18 @@ class _LoginData {
 
 class LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  final String _emailErrorText =
+      'The E-mail Address must be a valid email address.';
+  final String _passwordErrorText =
+      'The Password must be at least 8 characters.';
 
   _LoginData _data = new _LoginData();
 
-  String _validateEmail(String value) {
-    try {
-      Validate.isEmail(value);
-    } catch (e) {
-      return 'The E-mail Address must be a valid email address.';
-    }
-    return null;
-  }
+  String _validateEmail(String value) =>
+      !!Validators.isEmail(value) ? null : this._emailErrorText;
 
-  String _validatePassword(String value) {
-    if (value.length < 8) {
-      return 'The Password must be at least 8 characters.';
-    }
-
-    return null;
-  }
+  String _validatePassword(String value) =>
+      Validators.isPassword(value) ? null : this._passwordErrorText;
 
   void submit() {
     if (this._formKey.currentState.validate()) {
@@ -64,7 +56,7 @@ class LoginScreenState extends State<LoginScreen> {
                   validator: this._validateEmail,
                 ),
                 new TextFormField(
-                  obscureText: true, // Use secure text for passwords.
+                  obscureText: true,
                   decoration: new InputDecoration(
                       hintText: 'Password', labelText: 'Enter your password'),
                   onSaved: (String value) => this._data.password = value,

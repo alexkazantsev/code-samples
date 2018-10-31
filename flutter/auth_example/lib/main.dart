@@ -1,18 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux/redux.dart';
-
 import 'package:auth_example/models/models.dart';
 import 'package:auth_example/reducers/combine-reducers.dart';
 import 'package:auth_example/screens/screens.dart';
 import 'package:auth_example/utils/utils.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
 
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
-  final store =
-      new Store(appReducer, // ignore: strong_mode_uses_dynamic_as_bottom
-          initialState: new AppState.loading());
+  final store = new Store(appReducer, initialState: new AppState.loading());
 
   MyApp();
 
