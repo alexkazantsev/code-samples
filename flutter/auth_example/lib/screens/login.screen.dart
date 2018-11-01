@@ -12,7 +12,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginResponse {
+  @required
   final String token;
+
+  @required
   final String expires;
 
   _LoginResponse({this.token, this.expires});
@@ -114,26 +117,31 @@ class LoginScreenState extends State<LoginScreen> {
                   validator: this._validatePassword,
                 ),
                 new Container(
-                  padding: new EdgeInsets.only(top: 10.0),
-                  child: new Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      new RichText(
-                        text: TextSpan(
-                            text: errorMessage,
-                            style: TextStyle(
-                                color: Colors.red, fontStyle: FontStyle.italic)),
-                      ),
-                    ],
-                  )
-                ),
+                    padding: new EdgeInsets.only(top: 10.0),
+                    child: new Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        new RichText(
+                          text: TextSpan(
+                              text: errorMessage,
+                              style: TextStyle(
+                                  color: Colors.red,
+                                  fontStyle: FontStyle.italic)),
+                        ),
+                      ],
+                    )),
                 new Container(
                   width: MediaQuery.of(context).size.width,
                   child: new RaisedButton(
-                    child: new Text(
-                      processing ? '...' : 'Login',
-                      style: new TextStyle(color: Colors.white),
-                    ),
+                    disabledColor: Colors.blue,
+                    child: processing
+                        ? new CircularProgressIndicator(
+                            backgroundColor: Colors.white,
+                          )
+                        : new Text(
+                            'Login',
+                            style: new TextStyle(color: Colors.white),
+                          ),
                     onPressed: processing ? null : () => this.submit(),
                     color: Colors.blue,
                   ),

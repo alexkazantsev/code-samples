@@ -1,7 +1,0 @@
-[package]
-name = "graphql-example"
-version = "0.1.0"
-authors = ["Alexander Kazantsev <kazantsev.public@gmail.com>"]
-
-[dependencies]
-juniper = "0.9.0"
