@@ -1,47 +1,18 @@
-import 'dart:convert';
-
+import 'package:auth_example/actions/actions.dart';
+import 'package:auth_example/models/models.dart';
 import 'package:auth_example/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen() : super(key: Keys.LOGIN_SCREEN);
+  LoginScreen({@required this.store}) : super(key: Keys.LOGIN_SCREEN);
+
+  final Store<AppState> store;
 
   @override
-  State<StatefulWidget> createState() => new LoginScreenState();
-}
-
-class _LoginResponse {
-  @required
-  final String token;
-
-  @required
-  final String expires;
-
-  _LoginResponse({this.token, this.expires});
-
-  factory _LoginResponse.fromJson(Map<String, dynamic> json) =>
-      _LoginResponse(token: json['access_token'], expires: json['expires_in']);
-}
-
-Future<_LoginResponse> _loginRequest(_LoginData data) async {
-  final response = await http.post('https://cms.incode-it.com/auth/login',
-      body: data.toJson());
-
-  if (response.statusCode < 300) {
-    return _LoginResponse.fromJson(json.decode(response.body));
-  } else {
-    throw Exception(response.body);
-  }
-}
-
-class _LoginData {
-  String email = '';
-  String password = '';
-
-  _LoginData({email, password});
-
-  Map<String, dynamic> toJson() => {'email': email, 'password': password};
+  State<StatefulWidget> createState() =>
+      new LoginScreenState(store: this.store);
 }
 
 class LoginScreenState extends State<LoginScreen> {
@@ -51,17 +22,19 @@ class LoginScreenState extends State<LoginScreen> {
   final String _passwordErrorText =
       'The Password must be at least 8 characters.';
 
-  _LoginData _data;
-  bool processing;
+  final Store<AppState> store;
+
+  LoginScreenState({@required this.store});
+
+  LoginData _data;
   String errorMessage;
 
   @override
   void initState() {
     super.initState();
 
-    processing = false;
     errorMessage = null;
-    _data = new _LoginData();
+    _data = new LoginData(email: null, password: null);
   }
 
   String _validateEmail(String value) =>
@@ -74,20 +47,7 @@ class LoginScreenState extends State<LoginScreen> {
     if (this._formKey.currentState.validate()) {
       this._formKey.currentState.save();
 
-      setState(() {
-        this.processing = true;
-        this.errorMessage = null;
-      });
-
-      try {
-        final data = await _loginRequest(this._data);
-        print('data -> ${data.token}');
-      } catch (e) {
-        print(e.message);
-        setState(() => this.errorMessage = 'Email or password is incorrect.');
-      } finally {
-        setState(() => this.processing = false);
-      }
+      this.store.dispatch(new LoginRequest(data: this._data));
     }
   }
 
@@ -121,6 +81,7 @@ class LoginScreenState extends State<LoginScreen> {
                     child: new Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
+//                        new StoreConnector(builder: null, converter: null)
                         new RichText(
                           text: TextSpan(
                               text: errorMessage,
@@ -132,19 +93,15 @@ class LoginScreenState extends State<LoginScreen> {
                     )),
                 new Container(
                   width: MediaQuery.of(context).size.width,
-                  child: new RaisedButton(
-                    disabledColor: Colors.blue,
-                    child: processing
-                        ? new CircularProgressIndicator(
-                            backgroundColor: Colors.white,
-                          )
-                        : new Text(
+                  child: new StoreConnector<AppState, bool>(
+                      builder: (_, processing) => new RaisedButton(
+                          color: Colors.blue,
+                          child: new Text(
                             'Login',
                             style: new TextStyle(color: Colors.white),
                           ),
-                    onPressed: processing ? null : () => this.submit(),
-                    color: Colors.blue,
-                  ),
+                          onPressed: processing ? null : () => this.submit()),
+                      converter: (store) => store.state.auth.processing),
                   margin: new EdgeInsets.only(top: 20.0),
                 )
               ],

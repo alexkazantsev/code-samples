@@ -1,3 +1,3 @@
 export 'app.dart';
 export 'user.dart';
-export 'token.dart';
+export 'auth.dart';

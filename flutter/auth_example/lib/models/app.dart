@@ -1,12 +1,12 @@
 import 'package:meta/meta.dart';
 
 import 'user.dart';
-import 'token.dart';
+import 'auth.dart';
 
 @immutable
 class AppState {
   final User user;
-  final Token token;
+  final Auth auth;
 
-  AppState({this.user, this.token});
+  AppState({this.user, this.auth});
 }

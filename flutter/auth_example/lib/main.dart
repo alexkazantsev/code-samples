@@ -5,27 +5,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_logging/redux_logging.dart';
-import 'package:redux_thunk/redux_thunk.dart';
+
+import 'middlewares/auth.middleware.dart';
 
 void main() => runApp(new MyApp());
 
 final loggerMiddleware = new LoggingMiddleware.printer();
 
 class MyApp extends StatelessWidget {
-  final store = new Store(appReducer,
-      initialState: new AppState(),
-      distinct: true,
-      middleware: []..add(thunkMiddleware)..add(loggerMiddleware));
-
   MyApp();
 
   @override
-  Widget build(BuildContext context) => new StoreProvider(
-      store: store,
-      child: new MaterialApp(
-        title: 'Auth example',
-        theme: new ThemeData.light(),
-        routes: getRoutes(context, store),
-        initialRoute: AppRoutes.login,
-      ));
+  Widget build(BuildContext context) {
+    var store = new Store<AppState>(appReducer,
+        initialState: new AppState(auth: new Auth(processing: false)),
+        distinct: true,
+        middleware: []..addAll(createAuthMiddleware(context)));
+
+    return new StoreProvider<AppState>(
+        store: store,
+        child: new MaterialApp(
+          title: 'Auth example',
+          theme: new ThemeData.light(),
+          routes: getRoutes(context, store),
+          initialRoute: '/',
+        ));
+  }
 }
