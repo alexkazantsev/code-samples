@@ -6,7 +6,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_logging/redux_logging.dart';
 
-import 'middlewares/auth.middleware.dart';
+import 'middlewares/middlewares.dart';
 
 void main() => runApp(new MyApp());
 
@@ -18,9 +18,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var store = new Store<AppState>(appReducer,
-        initialState: new AppState(auth: new Auth(processing: false)),
+        initialState: new AppState(auth: new Auth(processing: false), user: new User()),
         distinct: true,
-        middleware: []..addAll(createAuthMiddleware(context))..add(loggerMiddleware));
+        middleware: []
+          ..addAll(createAuthMiddleware(context))
+          ..addAll(createUserMiddleware(context))
+          ..add(loggerMiddleware));
 
     return new StoreProvider<AppState>(
         store: store,

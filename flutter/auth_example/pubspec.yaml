@@ -20,6 +20,7 @@ dependencies:
   shared_preferences: ^0.4.3
   validate: ^1.7.0
   http: ^0.12.0
+  font_awesome_flutter: ^8.0.0
   flutter:
     sdk: flutter
 
@@ -42,6 +43,19 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  fonts:
+    - family: Themify
+      fonts:
+        - asset: assets/fonts/themify.ttf
+    - family: LineAwesome
+      fonts:
+        - asset: assets/fonts/line-awesome.ttf
+    - family: Timeburner
+      fonts:
+        - asset: assets/fonts/timeburnernormal.ttf
+        - asset: assets/fonts/timeburnerbold.ttf
+          weight: 700
 
   # To add assets to your application, add an assets section, like this:
   # assets:

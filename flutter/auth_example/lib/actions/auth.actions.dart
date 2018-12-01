@@ -36,26 +36,27 @@ class LoginRequest {
   LoginRequest({this.data, this.onSuccess, this.onError});
 }
 
-class LogInSuccessful {
+class LoginSuccess {
   final Auth auth;
 
-  LogInSuccessful({@required this.auth});
+  LoginSuccess({@required this.auth});
 
   @override
   String toString() {
-    return 'LogIn{user: $auth}';
+    return 'Login{user: $auth}';
   }
 }
 
-@immutable
-class LogInFail {
+class LoginFail {
   @required
   final String error;
 
-  LogInFail(this.error);
+  LoginFail(this.error);
 
   @override
   String toString() {
     return 'Login{There was an error logging in: $error}';
   }
 }
+
+class Logout {}

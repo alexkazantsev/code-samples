@@ -45,8 +45,11 @@ class LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  void _onLoginSuccess(ctx) => Navigator.of(ctx)
-      .pushNamedAndRemoveUntil('/profile', (Route<dynamic> route) => false);
+  void _onLoginSuccess(ctx) {
+    this._formKey.currentState.reset();
+    Navigator.of(ctx)
+        .pushNamedAndRemoveUntil('/profile', (Route<dynamic> route) => false);
+  }
 
   @override
   Widget build(BuildContext context) => new Scaffold(
