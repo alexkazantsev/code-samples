@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     var store = new Store<AppState>(appReducer,
         initialState: new AppState(auth: new Auth(processing: false)),
         distinct: true,
-        middleware: []..addAll(createAuthMiddleware(context)));
+        middleware: []..addAll(createAuthMiddleware(context))..add(loggerMiddleware));
 
     return new StoreProvider<AppState>(
         store: store,

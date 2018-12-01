@@ -56,6 +56,6 @@ class LogInFail {
 
   @override
   String toString() {
-    return 'LogIn{There was an error logging in: $error}';
+    return 'Login{There was an error logging in: $error}';
   }
 }

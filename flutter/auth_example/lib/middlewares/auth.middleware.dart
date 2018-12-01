@@ -13,16 +13,17 @@ List<Middleware<AppState>> createAuthMiddleware(context) {
 
 Middleware<AppState> _createLoginMiddleware(context) {
   return (Store store, dynamic action, NextDispatcher next) async {
+    next(action);
     if (action is LoginRequest) {
       final response = await http.post('${Config.API_URL}/auth/login',
           body: action.data.toJson());
       if (response.statusCode < 300) {
         store.dispatch(new LogInSuccessful(
             auth: Auth.fromJson(json.decode(response.body))));
+        if (action.onSuccess is Function) action.onSuccess();
       } else {
         store.dispatch(new LogInFail('Email or password is incorrect'));
       }
     }
-    next(action);
   };
 }

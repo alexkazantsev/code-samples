@@ -11,8 +11,7 @@ class LoginScreen extends StatefulWidget {
   final Store<AppState> store;
 
   @override
-  State<StatefulWidget> createState() =>
-      new LoginScreenState(store: this.store);
+  State<StatefulWidget> createState() => new LoginScreenState();
 }
 
 class LoginScreenState extends State<LoginScreen> {
@@ -22,19 +21,13 @@ class LoginScreenState extends State<LoginScreen> {
   final String _passwordErrorText =
       'The Password must be at least 8 characters.';
 
-  final Store<AppState> store;
-
-  LoginScreenState({@required this.store});
-
   LoginData _data;
-  String errorMessage;
 
   @override
   void initState() {
     super.initState();
 
-    errorMessage = null;
-    _data = new LoginData(email: null, password: null);
+    _data = new LoginData(email: 'admin@mail.com', password: '8eKBUc');
   }
 
   String _validateEmail(String value) =>
@@ -43,13 +36,17 @@ class LoginScreenState extends State<LoginScreen> {
   String _validatePassword(String value) =>
       Validators.isPassword(value) ? null : this._passwordErrorText;
 
-  void submit() async {
+  void submit(ctx) async {
     if (this._formKey.currentState.validate()) {
       this._formKey.currentState.save();
 
-      this.store.dispatch(new LoginRequest(data: this._data));
+      widget.store.dispatch(new LoginRequest(
+          data: this._data, onSuccess: () => this._onLoginSuccess(ctx)));
     }
   }
+
+  void _onLoginSuccess(ctx) => Navigator.of(ctx)
+      .pushNamedAndRemoveUntil('/profile', (Route<dynamic> route) => false);
 
   @override
   Widget build(BuildContext context) => new Scaffold(
@@ -64,6 +61,7 @@ class LoginScreenState extends State<LoginScreen> {
               children: <Widget>[
                 new TextFormField(
                   keyboardType: TextInputType.emailAddress,
+                  initialValue: 'admin@mail.com',
                   decoration: new InputDecoration(
                       hintText: 'you@example.com', labelText: 'E-mail Address'),
                   onSaved: (String value) => this._data.email = value,
@@ -71,6 +69,7 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
                 new TextFormField(
                   obscureText: true,
+                  initialValue: '8eKBUc',
                   decoration: new InputDecoration(
                       hintText: 'Password', labelText: 'Enter your password'),
                   onSaved: (String value) => this._data.password = value,
@@ -81,26 +80,28 @@ class LoginScreenState extends State<LoginScreen> {
                     child: new Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-//                        new StoreConnector(builder: null, converter: null)
-                        new RichText(
-                          text: TextSpan(
-                              text: errorMessage,
-                              style: TextStyle(
-                                  color: Colors.red,
-                                  fontStyle: FontStyle.italic)),
-                        ),
+                        new StoreConnector<AppState, dynamic>(
+                            builder: (_, error) => new RichText(
+                                  text: TextSpan(
+                                      text: error,
+                                      style: TextStyle(
+                                          color: Colors.red,
+                                          fontStyle: FontStyle.italic)),
+                                ),
+                            converter: (store) => store.state.auth.error),
                       ],
                     )),
                 new Container(
                   width: MediaQuery.of(context).size.width,
                   child: new StoreConnector<AppState, bool>(
-                      builder: (_, processing) => new RaisedButton(
+                      builder: (ctx, processing) => new RaisedButton(
                           color: Colors.blue,
                           child: new Text(
                             'Login',
                             style: new TextStyle(color: Colors.white),
                           ),
-                          onPressed: processing ? null : () => this.submit()),
+                          onPressed:
+                              processing ? null : () => this.submit(ctx)),
                       converter: (store) => store.state.auth.processing),
                   margin: new EdgeInsets.only(top: 20.0),
                 )
