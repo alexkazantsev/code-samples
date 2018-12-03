@@ -24,7 +24,7 @@ class ProfileScreenState extends State<ProfileScreen> {
   void onLogoutPressed(BuildContext ctx) {
     widget.store.dispatch(new Logout());
     Navigator.of(ctx)
-        .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+        .pushNamedAndRemoveUntil(Routes.LOGIN, (Route<dynamic> route) => false);
   }
 
   @override

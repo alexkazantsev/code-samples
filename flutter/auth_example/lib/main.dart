@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         child: new MaterialApp(
           title: 'Auth example',
           routes: getRoutes(context, store),
-          initialRoute: '/',
+          initialRoute: Routes.LOGIN,
         ));
   }
 }
