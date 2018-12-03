@@ -16,11 +16,15 @@ User _onRequest(User user, dynamic action) {
 User _onSuccess(User user, UserSuccess action) {
   return user.copyWith(
       processing: false,
+      id: action.user.id,
       firstName: action.user.firstName,
       lastName: action.user.lastName,
       email: action.user.email,
       gender: action.user.gender,
-      prone: action.user.phone);
+      phone: action.user.phone,
+      photo: action.user.photo,
+      experience: action.user.experience,
+  );
 }
 
 User _onRequestFailed(User user, dynamic action) {

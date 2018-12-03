@@ -44,6 +44,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - assets/images/default_profile.jpg
+
   fonts:
     - family: Themify
       fonts:

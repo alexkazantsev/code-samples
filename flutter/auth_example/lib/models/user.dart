@@ -8,6 +8,8 @@ class User {
   final String email;
   final String gender;
   final String phone;
+  final int experience;
+  final String photo;
   final bool processing;
 
   User(
@@ -17,6 +19,8 @@ class User {
       this.email,
       this.gender,
       this.phone,
+      this.experience,
+      this.photo,
       this.processing});
 
   User copyWith(
@@ -25,8 +29,14 @@ class User {
       String lastName,
       String email,
       String gender,
-      String prone,
+      String phone,
+      int experience,
+      String photo,
       bool processing}) {
+
+    print('111 --> ');
+    print(phone);
+    print(experience);
     return User(
       id: id ?? this.id,
       firstName: firstName ?? this.firstName,
@@ -34,17 +44,30 @@ class User {
       email: email ?? this.email,
       gender: gender ?? this.gender,
       phone: phone ?? this.phone,
+      experience: experience ?? this.experience,
+      photo: photo ?? this.photo,
       processing: processing ?? this.processing,
     );
   }
 
   factory User.clean() => User();
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
-      id: json['id'],
-      firstName: json['first_name'],
-      lastName: json['last_name'],
-      email: json['email'],
-      gender: json['gender'],
-      phone: json['phone']);
+  factory User.fromJson(Map<String, dynamic> json) {
+    var foo = json['phone'].toString();
+    print('fromJson -> $foo');
+   return User(
+       id: json['id'],
+       firstName: json['first_name'],
+       lastName: json['last_name'],
+       email: json['email'],
+       gender: json['gender'],
+       phone: json['phone'],
+       experience: json['experience'],
+       photo: json['photo']);
+  }
+
+  @override
+  String toString() {
+    return 'User{id: $id, firstName: $firstName, lastName: $lastName, email: $email, gender: $gender, phone: $phone, experience: $experience, photo: $photo, processing: $processing}';
+  }
 }

@@ -18,7 +18,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var store = new Store<AppState>(appReducer,
-        initialState: new AppState(auth: new Auth(processing: false), user: new User()),
+        initialState: new AppState(
+            auth: new Auth(processing: false),
+            user: new User(processing: true)),
         distinct: true,
         middleware: []
           ..addAll(createAuthMiddleware(context))
