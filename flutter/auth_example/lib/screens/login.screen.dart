@@ -27,7 +27,7 @@ class LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
 
-    _data = new LoginData(email: 'admin@mail.com', password: '8eKBUc');
+    _data = new LoginData(email: null, password: null);
   }
 
   String _validateEmail(String value) =>
@@ -72,7 +72,6 @@ class LoginScreenState extends State<LoginScreen> {
             ),
             TextFormField(
               keyboardType: TextInputType.emailAddress,
-              initialValue: 'admin@mail.com',
               style:
                   TextStyle(fontFamily: Fonts.TIMEBURNER, color: Colors.black),
               decoration: InputDecoration(
@@ -84,7 +83,6 @@ class LoginScreenState extends State<LoginScreen> {
             ),
             TextFormField(
               obscureText: true,
-              initialValue: '8eKBUc',
               style:
                   TextStyle(fontFamily: Fonts.TIMEBURNER, color: Colors.black),
               decoration: InputDecoration(
