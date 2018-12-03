@@ -34,9 +34,6 @@ class User {
       String photo,
       bool processing}) {
 
-    print('111 --> ');
-    print(phone);
-    print(experience);
     return User(
       id: id ?? this.id,
       firstName: firstName ?? this.firstName,
@@ -53,8 +50,6 @@ class User {
   factory User.clean() => User();
 
   factory User.fromJson(Map<String, dynamic> json) {
-    var foo = json['phone'].toString();
-    print('fromJson -> $foo');
    return User(
        id: json['id'],
        firstName: json['first_name'],

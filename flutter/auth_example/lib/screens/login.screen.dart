@@ -52,63 +52,87 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Login'),
-      ),
-      body: new Container(
-          padding: new EdgeInsets.all(20.0),
-          child: new Form(
-            key: this._formKey,
-            child: new ListView(
-              children: <Widget>[
-                new TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  initialValue: 'admin@mail.com',
-                  decoration: new InputDecoration(
-                      hintText: 'you@example.com', labelText: 'E-mail Address'),
-                  onSaved: (String value) => this._data.email = value,
-                  validator: this._validateEmail,
-                ),
-                new TextFormField(
-                  obscureText: true,
-                  initialValue: '8eKBUc',
-                  decoration: new InputDecoration(
-                      hintText: 'Password', labelText: 'Enter your password'),
-                  onSaved: (String value) => this._data.password = value,
-                  validator: this._validatePassword,
-                ),
-                new Container(
-                    padding: new EdgeInsets.only(top: 10.0),
-                    child: new Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        new StoreConnector<AppState, dynamic>(
-                            builder: (_, error) => new RichText(
-                                  text: TextSpan(
-                                      text: error,
-                                      style: TextStyle(
-                                          color: Colors.red,
-                                          fontStyle: FontStyle.italic)),
-                                ),
-                            converter: (store) => store.state.auth.error),
-                      ],
-                    )),
-                new Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: new StoreConnector<AppState, bool>(
-                      builder: (ctx, processing) => new RaisedButton(
-                          color: Colors.blue,
-                          child: new Text(
-                            'Login',
-                            style: new TextStyle(color: Colors.white),
-                          ),
-                          onPressed:
-                              processing ? null : () => this.submit(ctx)),
-                      converter: (store) => store.state.auth.processing),
-                  margin: new EdgeInsets.only(top: 20.0),
-                )
-              ],
+  Widget build(BuildContext context) => Scaffold(
+          body: Center(
+              child: Form(
+        key: this._formKey,
+        child: ListView(
+          shrinkWrap: true,
+          padding: EdgeInsets.only(left: 24.0, right: 24.0),
+          children: <Widget>[
+            Center(
+              child: Text(
+                'Login',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: Fonts.TIMEBURNER,
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.w700),
+              ),
             ),
-          )));
+            TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              initialValue: 'admin@mail.com',
+              style:
+                  TextStyle(fontFamily: Fonts.TIMEBURNER, color: Colors.black),
+              decoration: InputDecoration(
+                  hintText: 'you@example.com',
+                  labelText: 'E-mail Address',
+                  labelStyle: TextStyle(fontWeight: FontWeight.w600)),
+              onSaved: (String value) => this._data.email = value,
+              validator: this._validateEmail,
+            ),
+            TextFormField(
+              obscureText: true,
+              initialValue: '8eKBUc',
+              style:
+                  TextStyle(fontFamily: Fonts.TIMEBURNER, color: Colors.black),
+              decoration: InputDecoration(
+                  hintText: 'Password',
+                  labelText: 'Enter your password',
+                  labelStyle: TextStyle(fontWeight: FontWeight.w600)),
+              onSaved: (String value) => this._data.password = value,
+              validator: this._validatePassword,
+            ),
+            Container(
+                padding: EdgeInsets.only(top: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    StoreConnector<AppState, dynamic>(
+                        builder: (_, error) => RichText(
+                              text: TextSpan(
+                                  text: error,
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontFamily: Fonts.TIMEBURNER)),
+                            ),
+                        converter: (store) => store.state.auth.error),
+                  ],
+                )),
+            Padding(
+                padding: EdgeInsets.symmetric(vertical: 16.0),
+                child: StoreConnector<AppState, bool>(
+                  converter: (store) => store.state.auth.processing,
+                  builder: (ctx, processing) => Material(
+                        borderRadius: BorderRadius.circular(30.0),
+                        shadowColor: Color(0xFF7928D1),
+                        color: Color(0xFF7928D1),
+                        elevation: 5.0,
+                        child: MaterialButton(
+                          minWidth: 200.0,
+                          height: 42.0,
+                          onPressed: processing ? null : () => this.submit(ctx),
+                          child: Text(
+                            'Login',
+                            style: TextStyle(
+                                fontFamily: Fonts.TIMEBURNER,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+                ))
+          ],
+        ),
+      )));
 }

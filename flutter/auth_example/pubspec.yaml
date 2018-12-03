@@ -16,7 +16,6 @@ dependencies:
   redux: ^3.0.0
   flutter_redux: ^0.5.2
   redux_logging: ^0.3.0
-  redux_thunk: ^0.2.1
   shared_preferences: ^0.4.3
   validate: ^1.7.0
   http: ^0.12.0
@@ -48,12 +47,6 @@ flutter:
     - assets/images/default_profile.jpg
 
   fonts:
-    - family: Themify
-      fonts:
-        - asset: assets/fonts/themify.ttf
-    - family: LineAwesome
-      fonts:
-        - asset: assets/fonts/line-awesome.ttf
     - family: Timeburner
       fonts:
         - asset: assets/fonts/timeburnernormal.ttf

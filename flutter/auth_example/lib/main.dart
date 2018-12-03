@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
         store: store,
         child: new MaterialApp(
           title: 'Auth example',
-          theme: new ThemeData.light(),
           routes: getRoutes(context, store),
           initialRoute: '/',
         ));

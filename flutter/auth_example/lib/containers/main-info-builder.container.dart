@@ -1,4 +1,5 @@
 import 'package:auth_example/models/models.dart';
+import 'package:auth_example/utils/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -6,7 +7,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 class MainInfoBuilder extends StatelessWidget {
-  MainInfoBuilder({Key key}) : super(key: key);
+  MainInfoBuilder({Key key}) : super(key: Keys.MAIN_INFO_BUILDER_CONTAINER);
 
   @override
   Widget build(BuildContext context) {

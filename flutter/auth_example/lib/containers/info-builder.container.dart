@@ -1,4 +1,5 @@
 import 'package:auth_example/models/models.dart';
+import 'package:auth_example/utils/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -6,27 +7,26 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 class InfoBuilder extends StatelessWidget {
-  InfoBuilder({Key key}) : super(key: key);
+  InfoBuilder({Key key}) : super(key: Keys.INFO_BUILDER_CONTAINER);
 
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, _ViewModel>(
-      distinct: true,
-      converter: _ViewModel.fromStore,
-      builder: (_, vm) {
-        return new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            _buildFollowerStat("Experience", vm.experience),
-            _buildVerticalDivider(),
-            _buildFollowerStat("Gender", vm.gender),
-            _buildVerticalDivider(),
-            _buildFollowerStat("Phone", vm.phone),
-          ],
-        );
-      }
-    );
+        distinct: true,
+        converter: _ViewModel.fromStore,
+        builder: (_, vm) {
+          return new Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              _buildInfoBlock("Experience", vm.experience),
+              _buildVerticalDivider(),
+              _buildInfoBlock("Gender", vm.gender),
+              _buildVerticalDivider(),
+              _buildInfoBlock("Phone", vm.phone),
+            ],
+          );
+        });
   }
 }
 
@@ -47,9 +47,9 @@ class _ViewModel {
     var phone = store.state.user.phone;
 
     return _ViewModel(
-      experience: processing ? _ViewModel.LOADING : '$experience years',
-      gender: processing ? _ViewModel.LOADING : gender,
-      phone: processing ? _ViewModel.LOADING : phone,
+      experience: processing ? LOADING : '$experience years',
+      gender: processing ? LOADING : gender,
+      phone: processing ? LOADING : phone,
     );
   }
 
@@ -68,7 +68,7 @@ Widget _buildVerticalDivider() {
   );
 }
 
-Widget _buildFollowerStat(String title, String value) {
+Widget _buildInfoBlock(String title, String value) {
   final titleStyle = new TextStyle(
       fontSize: 16.0, fontFamily: 'Timeburner', color: Colors.white);
   final valueStyle = new TextStyle(
