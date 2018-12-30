@@ -8,28 +8,27 @@ import 'package:redux_logging/redux_logging.dart';
 
 import 'middlewares/middlewares.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(MyApp());
 
-final loggerMiddleware = new LoggingMiddleware.printer();
+final loggerMiddleware = LoggingMiddleware.printer();
 
 class MyApp extends StatelessWidget {
   MyApp();
 
   @override
   Widget build(BuildContext context) {
-    var store = new Store<AppState>(appReducer,
-        initialState: new AppState(
-            auth: new Auth(processing: false),
-            user: new User(processing: true)),
+    var store = Store<AppState>(appReducer,
+        initialState: AppState(
+            auth: Auth(processing: false), user: User(processing: true)),
         distinct: true,
         middleware: []
           ..addAll(createAuthMiddleware(context))
           ..addAll(createUserMiddleware(context))
           ..add(loggerMiddleware));
 
-    return new StoreProvider<AppState>(
+    return StoreProvider<AppState>(
         store: store,
-        child: new MaterialApp(
+        child: MaterialApp(
           title: 'Auth example',
           routes: getRoutes(context, store),
           initialRoute: Routes.LOGIN,

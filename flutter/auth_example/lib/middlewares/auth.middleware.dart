@@ -8,7 +8,7 @@ import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createAuthMiddleware(context) {
   final login = _createLoginMiddleware(context);
-  return [new TypedMiddleware<AppState, LoginRequest>(login)];
+  return [TypedMiddleware<AppState, LoginRequest>(login)];
 }
 
 Middleware<AppState> _createLoginMiddleware(context) {
@@ -19,10 +19,10 @@ Middleware<AppState> _createLoginMiddleware(context) {
           body: action.data.toJson());
       if (response.statusCode < 300) {
         store.dispatch(
-            new LoginSuccess(auth: Auth.fromJson(json.decode(response.body))));
+            LoginSuccess(auth: Auth.fromJson(json.decode(response.body))));
         if (action.onSuccess is Function) action.onSuccess();
       } else {
-        store.dispatch(new LoginFail('Email or password is incorrect'));
+        store.dispatch(LoginFail('Email or password is incorrect'));
       }
     }
   };

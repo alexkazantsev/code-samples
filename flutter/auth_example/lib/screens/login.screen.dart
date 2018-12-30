@@ -11,11 +11,11 @@ class LoginScreen extends StatefulWidget {
   final Store<AppState> store;
 
   @override
-  State<StatefulWidget> createState() => new LoginScreenState();
+  State<StatefulWidget> createState() => LoginScreenState();
 }
 
 class LoginScreenState extends State<LoginScreen> {
-  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final String _emailErrorText =
       'The E-mail Address must be a valid email address.';
   final String _passwordErrorText =
@@ -27,7 +27,7 @@ class LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
 
-    _data = new LoginData(email: null, password: null);
+    _data = LoginData(email: null, password: null);
   }
 
   String _validateEmail(String value) =>
@@ -40,7 +40,7 @@ class LoginScreenState extends State<LoginScreen> {
     if (this._formKey.currentState.validate()) {
       this._formKey.currentState.save();
 
-      widget.store.dispatch(new LoginRequest(
+      widget.store.dispatch(LoginRequest(
           data: this._data, onSuccess: () => this._onLoginSuccess(ctx)));
     }
   }

@@ -10,7 +10,7 @@ class Routes {
 
 Map<String, WidgetBuilder> getRoutes(ctx, store) {
   return {
-    Routes.LOGIN: (BuildContext ctx) => new LoginScreen(store: store),
-    Routes.PROFILE: (BuildContext ctx) => new ProfileScreen(store: store),
+    Routes.LOGIN: (BuildContext ctx) => LoginScreen(store: store),
+    Routes.PROFILE: (BuildContext ctx) => ProfileScreen(store: store),
   };
 }

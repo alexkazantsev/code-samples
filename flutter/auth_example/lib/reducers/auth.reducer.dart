@@ -3,10 +3,10 @@ import 'package:auth_example/models/models.dart';
 import 'package:redux/redux.dart';
 
 final authReducer = combineReducers<Auth>([
-  new TypedReducer<Auth, LoginRequest>(_onRequest),
-  new TypedReducer<Auth, LoginSuccess>(_onSuccess),
-  new TypedReducer<Auth, LoginFail>(_onRequestFailed),
-  new TypedReducer<Auth, Logout>(_onLogout),
+  TypedReducer<Auth, LoginRequest>(_onRequest),
+  TypedReducer<Auth, LoginSuccess>(_onSuccess),
+  TypedReducer<Auth, LoginFail>(_onRequestFailed),
+  TypedReducer<Auth, Logout>(_onLogout),
 ]);
 
 Auth _onRequest(Auth auth, dynamic action) {
