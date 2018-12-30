@@ -15,7 +15,9 @@ Auth _onRequest(Auth auth, dynamic action) {
 
 Auth _onSuccess(Auth auth, dynamic action) {
   return auth.copyWith(
-      processing: false, token: action.auth.token, expires: action.auth.expires);
+      processing: false,
+      token: action.auth.token,
+      expires: action.auth.expires);
 }
 
 Auth _onRequestFailed(Auth auth, dynamic action) {

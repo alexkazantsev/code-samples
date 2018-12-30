@@ -33,7 +33,6 @@ class User {
       int experience,
       String photo,
       bool processing}) {
-
     return User(
       id: id ?? this.id,
       firstName: firstName ?? this.firstName,
@@ -50,15 +49,15 @@ class User {
   factory User.clean() => User();
 
   factory User.fromJson(Map<String, dynamic> json) {
-   return User(
-       id: json['id'],
-       firstName: json['first_name'],
-       lastName: json['last_name'],
-       email: json['email'],
-       gender: json['gender'],
-       phone: json['phone'],
-       experience: json['experience'],
-       photo: json['photo']);
+    return User(
+        id: json['id'],
+        firstName: json['first_name'],
+        lastName: json['last_name'],
+        email: json['email'],
+        gender: json['gender'],
+        phone: json['phone'],
+        experience: json['experience'],
+        photo: json['photo']);
   }
 
   @override
