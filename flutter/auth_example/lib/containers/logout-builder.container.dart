@@ -13,12 +13,12 @@ class LogoutBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        new IconButton(
-            icon: new Icon(
+        IconButton(
+            icon: Icon(
               FontAwesomeIcons.arrowLeft,
               color: Colors.white,
               size: 30.0,

@@ -9,8 +9,7 @@ class Auth {
 
   Auth({this.token, this.expires, this.processing, this.error});
 
-  Auth copyWith(
-      {String token, String expires, bool processing, String error}) {
+  Auth copyWith({String token, String expires, bool processing, String error}) {
     return Auth(
       token: token ?? this.token,
       expires: expires ?? this.expires,

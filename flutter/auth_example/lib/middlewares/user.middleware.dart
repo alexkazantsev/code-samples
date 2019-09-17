@@ -8,7 +8,7 @@ import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createUserMiddleware(ctx) {
   final me = _createUserMiddleware(ctx);
-  return [new TypedMiddleware<AppState, UserRequest>(me)];
+  return [TypedMiddleware<AppState, UserRequest>(me)];
 }
 
 Middleware<AppState> _createUserMiddleware(ctx) {
@@ -19,9 +19,9 @@ Middleware<AppState> _createUserMiddleware(ctx) {
           headers: {'Authorization': 'Bearer ${store.state.auth.token}'});
       if (response.statusCode < 300) {
         store.dispatch(
-            new UserSuccess(user: User.fromJson(json.decode(response.body))));
+            UserSuccess(user: User.fromJson(json.decode(response.body))));
       } else {
-        store.dispatch(new UserFail());
+        store.dispatch(UserFail());
       }
     }
   };
