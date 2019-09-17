@@ -1,0 +1,10 @@
+<li class="list-group-item contributor-container">
+  <div class="d-inline-flex">
+    <img class="" [src]="contributor.avatar_url" [alt]="contributor.avatar_url" />
+    <div class="d-flex contributor-info">
+      <h3 class="">{{ contributor.login }}</h3>
+      <p *ngIf="!contributor.followersLoaded">Loading...</p>
+      <p *ngIf="contributor.followersLoaded">{{ contributor.followers.length }} Followers</p>
+    </div>
+  </div>
+</li>

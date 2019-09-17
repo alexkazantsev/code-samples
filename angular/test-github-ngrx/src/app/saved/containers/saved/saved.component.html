@@ -1,0 +1,8 @@
+<app-empty-list *ngIf="!(savedRepos$ | async).length"></app-empty-list>
+<app-repo-list
+  *ngIf="!!(savedRepos$ | async).length"
+  [repos]="savedRepos$ | async"
+  [showRemoveBtn]="true"
+  (removeClick)="onRemoveCLickHandler($event)"
+  (repoClick)="onRepoClickHandler($event)"
+></app-repo-list>

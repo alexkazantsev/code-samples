@@ -1,0 +1,22 @@
+.card-container {
+  width: 100%;
+  margin: 0;
+
+  .card-body {
+    padding: 0;
+
+    .title-wrapper {
+      width: 100%;
+
+      fa-icon {
+        margin-right: 8px;
+      }
+    }
+    .footer-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}

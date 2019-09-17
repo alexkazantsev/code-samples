@@ -1,0 +1,11 @@
+<div class="row repos-container">
+    <app-github-repo
+      class="col col-md-12 col-lg-6 col-xl-4"
+      *ngFor="let repo of repos"
+      [repo]="repo"
+      [showRemoveBtn]="showRemoveBtn"
+      (removeClick)="onRemoveClick(repo)"
+      (clickHandler)="onRepoClick($event)"
+    >
+    </app-github-repo>
+</div>

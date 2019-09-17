@@ -1,0 +1,31 @@
+<div class="container-fluid app-container">
+  <nav class="navbar sticky-top navbar-dark bg-primary">
+    <span class="navbar-brand font-weight-light">Explorer</span>
+
+    <div>
+      <ul class="navbar-nav mr-auto"></ul>
+      <ul class="my-2 my-lg-0 list-inline">
+        <li class="list-inline-item">
+          <a
+            routerLink="/trends"
+            routerLinkActive="active"
+            class="text-decoration-none text-light"
+          >
+            Trending
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a
+            routerLink="/trends/saved"
+            routerLinkActive="active"
+            class="text-decoration-none text-light"
+          >
+            Saved ({{ (savedRepos$ | async)?.length }})
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
+

@@ -1,0 +1,24 @@
+<div class="card border-light card-container">
+  <div class="card-body">
+    <div class="d-inline-flex justify-content-between title-wrapper">
+      <h5
+        class="card-title"
+        (click)="onHeaderClickHandler()"
+      >
+        {{ repo.full_name }}
+      </h5>
+      <app-repo-stars [stars]="repo.stargazers_count"></app-repo-stars>
+    </div>
+    <p class="card-text text-muted">{{ repo.description }}</p>
+    <div class="footer-container">
+      <app-repo-language
+        [language]="repo.language"
+        [languageColor]="repo.languageColor"
+      ></app-repo-language>
+      <app-remove-repo-button
+        *ngIf="showRemoveBtn"
+        (removeClick)="onRemoveClickHandler()"
+      ></app-remove-repo-button>
+    </div>
+  </div>
+</div>

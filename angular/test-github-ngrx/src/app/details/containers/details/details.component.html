@@ -1,0 +1,15 @@
+<app-repo-details
+  *ngIf="isDetailsLoaded$ | async"
+  [repo]="(repoDetails$ | async)"
+></app-repo-details>
+
+<ul
+  class="list-group list-group-flush"
+  *ngIf="(repoDetails$ | async)"
+>
+  <app-repo-contributor
+    *ngFor="let contributor of (repoContributors$ | async)"
+    [contributor]="contributor"
+  >
+  </app-repo-contributor>
+</ul>

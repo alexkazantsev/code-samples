@@ -1,0 +1,20 @@
+<div class="repo-details-container d-flex">
+  <div class="col col-1 icon-container">
+    <fa-icon
+      [icon]="backIcon"
+      (click)="onBackClick()"
+    ></fa-icon>
+  </div>
+  <div class="col col-11 details-block">
+    <app-repo-title [title]="repo.full_name"></app-repo-title>
+    <p class="text-muted">{{ repo.description }}</p>
+    <div class="stars">
+      <app-repo-stars [stars]="repo.stargazers_count"></app-repo-stars>
+      <app-repo-language
+        [language]="repo.language"
+        [languageColor]="repo.languageColor"
+      ></app-repo-language>
+    </div>
+    <app-save-repo-button [repo]="repo"></app-save-repo-button>
+  </div>
+</div>

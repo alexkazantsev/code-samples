@@ -1,0 +1,11 @@
+.contributor-container {
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  .contributor-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+  }
+}

@@ -1,0 +1,11 @@
+<app-page-title [title]="title"></app-page-title>
+<div class="container-fluid">
+  <app-loader *ngIf="(processing$ | async)"></app-loader>
+  <app-repo-list
+    *ngIf="!(processing$ | async)"
+    [repos]="(trends$ | async)"
+    (repoClick)="onRepoClick($event)"
+
+  >
+  </app-repo-list>
+</div>
