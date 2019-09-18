@@ -16,34 +16,34 @@ class MainInfoBuilder extends StatelessWidget {
       converter: _ViewModel.fromStore,
       builder: (_, vm) {
         print(vm.toString());
-        final mainTextStyle = new TextStyle(
+        final mainTextStyle = TextStyle(
             fontFamily: 'Timeburner',
             color: Colors.white,
             fontWeight: FontWeight.w700,
             fontSize: 20.0);
-        final subTextStyle = new TextStyle(
+        final subTextStyle = TextStyle(
             fontFamily: 'Timeburner',
             fontSize: 16.0,
             color: Colors.white70,
             fontWeight: FontWeight.w700);
 
-        return new Row(
+        return Row(
           children: <Widget>[
-            new Container(
+            Container(
               width: 70.0,
               height: 60.0,
-              decoration: new BoxDecoration(
-                image: new DecorationImage(
-                    image: new NetworkImage(vm.photo), fit: BoxFit.cover),
-                borderRadius: new BorderRadius.all(new Radius.circular(20.0)),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(vm.photo), fit: BoxFit.cover),
+                borderRadius: BorderRadius.all(Radius.circular(20.0)),
               ),
             ),
-            new Padding(padding: const EdgeInsets.only(right: 20.0)),
-            new Column(
+            Padding(padding: const EdgeInsets.only(right: 20.0)),
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                new Text(vm.fullName, style: mainTextStyle),
-                new Text(vm.email, style: subTextStyle),
+                Text(vm.fullName, style: mainTextStyle),
+                Text(vm.email, style: subTextStyle),
               ],
             ),
           ],

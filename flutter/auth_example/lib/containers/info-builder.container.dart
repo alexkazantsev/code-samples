@@ -15,7 +15,7 @@ class InfoBuilder extends StatelessWidget {
         distinct: true,
         converter: _ViewModel.fromStore,
         builder: (_, vm) {
-          return new Row(
+          return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
@@ -60,7 +60,7 @@ class _ViewModel {
 }
 
 Widget _buildVerticalDivider() {
-  return new Container(
+  return Container(
     height: 30.0,
     width: 1.0,
     color: Colors.white30,
@@ -69,19 +69,19 @@ Widget _buildVerticalDivider() {
 }
 
 Widget _buildInfoBlock(String title, String value) {
-  final titleStyle = new TextStyle(
-      fontSize: 16.0, fontFamily: 'Timeburner', color: Colors.white);
-  final valueStyle = new TextStyle(
+  final titleStyle =
+      TextStyle(fontSize: 16.0, fontFamily: 'Timeburner', color: Colors.white);
+  final valueStyle = TextStyle(
       fontFamily: 'Timeburner',
       fontSize: 18.0,
       fontWeight: FontWeight.w700,
       color: Colors.white);
-  return new Column(
+  return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
-      new Text(title, style: titleStyle),
-      new Text(value, style: valueStyle),
+      Text(title, style: titleStyle),
+      Text(value, style: valueStyle),
     ],
   );
 }

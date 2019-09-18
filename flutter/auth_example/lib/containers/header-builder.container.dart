@@ -10,7 +10,7 @@ class HeaderBuilder extends StatelessWidget {
 
   HeaderBuilder(
       {Key key,
-      this.childrenBefore = const <Widget>[],
+      this.childrenBefore: const <Widget>[],
       @required this.childrenAfter,
       @required this.title})
       : super(key: Keys.HEADER_BUILDER_CONTAINER);
@@ -19,24 +19,23 @@ class HeaderBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     final topPadding = MediaQuery.of(context).padding.top;
 
-    return new Scaffold(
-      body: new Container(
+    return Scaffold(
+      body: Container(
           height: 303.0,
-          decoration:
-              new BoxDecoration(color: Colors.blue, boxShadow: <BoxShadow>[
-            new BoxShadow(
+          decoration: BoxDecoration(color: Colors.blue, boxShadow: <BoxShadow>[
+            BoxShadow(
                 spreadRadius: 2.0,
                 blurRadius: 4.0,
-                offset: new Offset(0.0, 1.0),
+                offset: Offset(0.0, 1.0),
                 color: Colors.black38),
           ]),
-          child: new Stack(
+          child: Stack(
             fit: StackFit.expand,
             children: <Widget>[
-              new Container(
+              Container(
                 height: 600.0,
-                decoration: new BoxDecoration(
-                  gradient: new LinearGradient(colors: <Color>[
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: <Color>[
                     //7928D1
                     const Color(0xFF7928D1), const Color(0xFF9A4DFF)
                   ], stops: <double>[
@@ -45,19 +44,19 @@ class HeaderBuilder extends StatelessWidget {
                   ], begin: Alignment.topRight, end: Alignment.bottomLeft),
                 ),
               ),
-              new Padding(
-                padding: new EdgeInsets.only(
+              Padding(
+                padding: EdgeInsets.only(
                     top: topPadding, left: 15.0, right: 15.0, bottom: 20.0),
-                child: new Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[]
                     ..addAll(this.childrenBefore)
                     ..add(
-                      new Padding(
+                      Padding(
                         padding: const EdgeInsets.only(bottom: 15.0),
-                        child: new Text(this.title,
-                            style: new TextStyle(
+                        child: Text(this.title,
+                            style: TextStyle(
                                 fontFamily: Fonts.TIMEBURNER,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white,

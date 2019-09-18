@@ -11,18 +11,18 @@ class ProfileScreen extends StatefulWidget {
   final Store<AppState> store;
 
   @override
-  State<StatefulWidget> createState() => new ProfileScreenState();
+  State<StatefulWidget> createState() => ProfileScreenState();
 }
 
 class ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
-    widget.store.dispatch(new UserRequest());
+    widget.store.dispatch(UserRequest());
     super.initState();
   }
 
   void onLogoutPressed(BuildContext ctx) {
-    widget.store.dispatch(new Logout());
+    widget.store.dispatch(Logout());
     Navigator.of(ctx)
         .pushNamedAndRemoveUntil(Routes.LOGIN, (Route<dynamic> route) => false);
   }
