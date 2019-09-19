@@ -7,6 +7,8 @@
 
 ### ReactJS
 
+- [NextJS + Redux + Saga Example (uotdated)](./react/next-redux)
+
 ### Angular
 
 - [GitHub Trends Test App](./angular/test-github-ngrx)
