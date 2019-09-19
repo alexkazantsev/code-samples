@@ -7,7 +7,7 @@
 
 ### ReactJS
 
-- [NextJS + Redux + Saga Example (uotdated)](./react/next-redux)
+- [NextJS + Redux + Saga Example](./react/next-redux)
 
 ### Angular
 
