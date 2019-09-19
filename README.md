@@ -2,7 +2,8 @@
 
 ### Common
 
-- [FabricJS + TypeScrip Custom Chart](./etra)
+- [FabricJS + TypeScript Custom Chart](./etra)
+- [FabricJS + JavaScript(ES6+) Custom Chart](./duval)
 
 ### ReactJS
 
