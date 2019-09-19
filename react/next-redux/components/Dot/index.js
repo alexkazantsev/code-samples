@@ -1,6 +1,3 @@
 import { DotWrapper } from './style';
 
-export const Dot = () => (
-  <DotWrapper ></DotWrapper>
-)
-;
+export const Dot = () => <DotWrapper />;

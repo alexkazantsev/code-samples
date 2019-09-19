@@ -4,7 +4,6 @@ import { Abstract, Scope, Type } from '@nestjs/common';
 import { ClassProvider } from '@nestjs/common/interfaces';
 
 export abstract class BaseAwsService<T extends AWS.SES | AWS.S3> implements ClassProvider<any> {
-  // tslint:disable-next-line:ban-types
   provide: string | symbol | Type<any> | Abstract<any> | Function;
   scope: Scope;
   useClass: Type<any>;
