@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  api_v1:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: api_v1
+    hostname: api_v1
+    volumes:
+      - ./api/src:/var/www/api_v1/src
+    ports:
+      - "3001:3001"
+    env_file:
+      - ./api/docker/environments
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    depends_on:
+      - api_v1
+    ports:
+      - "3000:3000"
+  web:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: web
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - api_v1
+      - frontend

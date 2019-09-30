@@ -30,3 +30,7 @@
 ### Flutter (Dart):
 
 - [Application for the devices driver checking](./flutter/device_driver_checker)
+
+### Test tasks:
+
+- [Captify](./test-tasks/captify-test-work)
