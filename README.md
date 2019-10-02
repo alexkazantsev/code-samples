@@ -18,6 +18,7 @@
 - [Code executor](./node-js/code-executor)
 - [NestJS AWS service example](./node-js/nestjs-service)
 - [NestJS boilerplate](https://github.com/alexkazantsev/nestjs-example)
+- [Tron REST API example](./node-js/tron)
 
 ### Go
 
