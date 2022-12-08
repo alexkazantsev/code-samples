@@ -13,7 +13,7 @@
     "axios": "^0.21.1",
     "cors": "^2.8.4",
     "dockerode": "^2.5.5",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "nodemon": "^1.17.4",
     "socket.io": "^2.1.1",
     "winston": "^2.4.2"
